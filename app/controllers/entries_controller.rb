@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: %i[ show edit update destroy ]
+  before_action :set_entry, only: %i[ show edit update destroy ] # Calls this set_entry method to help find a specific resource for show, redit, update, delete so you don't have to keep repeating yourself
 
   # GET /entries or /entries.json
   def index
