@@ -1,2 +1,36 @@
-<h1>Archives#index</h1>
-<p>Find me in app/views/archives/index.html.erb</p>
+<div>
+    <% @entries.each do |day, entries|%>
+    <h3>Entries for <%= day %></h3>
+
+    <h4>Breakdown for the day:</h4>
+    <div>
+        <p>Calories</p>
+        <strong> <%= entries.pluck(:calories).sum %></strong>
+    </div>
+        <div>
+        <p>Proteins</p>
+        <strong> <%= entries.pluck(:proteins).sum %></strong>
+    </div>
+        <div>
+        <p>Carbohydrates</p>
+        <strong> <%= entries.pluck(:carbohydrates).sum %></strong>
+    </div>
+        <div>
+        <p>fats</p>
+        <strong> <%= entries.pluck(:fats).sum %></strong>
+    </div>
+
+    <% entries.each do |entry|%>
+    <%= link_to entry_path(entry) do%>
+    <div>
+        <%= entry.calories %> calories,
+        <%= entry.proteins %>g proteins,
+        <%= entry.carbohydrates %>g carbohydrates
+        <%= entry.fats %>g fat
+
+    </div>
+    <% end %>
+    <% end %>
+    <% end %>
+
+</div>
