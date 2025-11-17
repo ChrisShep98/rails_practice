@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   get 'archives/index'
   resources :entries
   root to: "entries#index" # This sets up our root route and will go to the entries controller and find the index method and route to that
