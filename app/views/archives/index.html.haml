@@ -1,0 +1,74 @@
+-# <div>
+-#     <% @entries.each do |day, entries|%>
+-#     <h3>Entries for <%= day %></h3>
+
+-#     <h4>Breakdown for the day:</h4>
+-#     <div>
+-#         <p>Calories</p>
+-#         <strong> <%= entries.pluck(:calories).sum %> </strong>
+-#     </div>
+-#         <div>
+-#         <p>Proteins</p>
+-#         <strong> <%= entries.pluck(:proteins).sum %></strong>
+-#     </div>
+-#         <div>
+-#         <p>Carbohydrates</p>
+-#         <strong> <%= entries.pluck(:carbohydrates).sum %></strong>
+-#     </div>
+-#         <div>
+-#         <p>fats</p>
+-#         <strong> <%= entries.pluck(:fats).sum %></strong>
+-#     </div>
+
+-#     <% entries.each do |entry|%>
+-#     <%= link_to entry_path(entry) do%>
+-#     <div>
+-#         <%= entry.calories %> calories,
+-#         <%= entry.proteins %>g proteins,
+-#         <%= entry.carbohydrates %>g carbohydrates
+-#         <%= entry.fats %>g fat
+
+-#     </div>
+-#     <% end %>
+-#     <% end %>
+-#     <% end %>
+
+-#     <%= link_to "Back", entries_path %>
+
+-# </div>
+
+- @entries.each do |day, entries|
+  %h3
+    = day
+  %h4
+    Breakdown for the day:
+  %div
+    %p
+      Calories
+    %strong
+      = entries.pluck(:calories).sum
+  %div
+    %p
+      Proteins
+    %strong
+      = entries.pluck(:proteins).sum
+  %div
+    %p
+      Carbohydrates
+    %strong
+      = entries.pluck(:carbohydrates).sum
+  %div
+    %p
+      Fats
+    %strong
+      = entries.pluck(:fats).sum
+
+  - entries.each do |entry|
+    = link_to entry_path(entry) do
+      %div
+        = "#{entry.calories} calories"
+        = "#{entry.proteins} proteins"
+        = "#{entry.carbohydrates} carbohydrates"
+        = "#{entry.fats} fat"
+
+  = link_to 'Back', entries_path
