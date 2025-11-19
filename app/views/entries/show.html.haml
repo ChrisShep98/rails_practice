@@ -1,0 +1,30 @@
+%p#notice
+  = notice
+
+%p
+  %strong
+    Meal type:
+    = @entry.meal_type
+
+%p
+  %strong
+    Calories:
+    = @entry.calories
+
+%p
+  %strong
+    Proteins:
+    = @entry.proteins
+
+%p
+  %strong
+    Carbohydrates:
+    = @entry.carbohydrates
+
+%p
+  %strong
+    Fats:
+    = @entry.fats
+
+= link_to 'Edit', edit_entry_path(@entry)
+= link_to 'Back', entries_path

@@ -1,0 +1,31 @@
+%p#notice
+  = notice
+
+%h1
+  Entries
+
+%table
+  %thead
+    %tr
+      %th Meal Type
+      %th Calories
+      %th Proteins
+      %th Carbohydrates
+      %th Fats
+      %th{ colspan: 3 }
+
+  %tbody
+    - @entries.each do |entry|
+      %td= entry.meal_type
+      %td= entry.calories
+      %td= entry.proteins
+      %td= entry.carbohydrates
+      %td= entry.fats
+      %td= link_to 'Show', entry
+      %td= link_to 'Edit', edit_entry_path(entry)
+      %td= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Entry', new_entry_path
+= link_to 'View all entries', archives_index_path
