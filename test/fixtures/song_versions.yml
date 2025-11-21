@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  song_name: MyString
+  date: MyString
+  venue_name: MyString
+  venue_location: MyString
+  vote_count: 1
+  voted_by: one
+  comments: one
+  user_who_posted: one
+  description: MyString
+  slug: MyString
+
+two:
+  song_name: MyString
+  date: MyString
+  venue_name: MyString
+  venue_location: MyString
+  vote_count: 1
+  voted_by: two
+  comments: two
+  user_who_posted: two
+  description: MyString
+  slug: MyString

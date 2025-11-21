@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Song Versions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Song name</th>
+      <th>Date</th>
+      <th>Venue name</th>
+      <th>Venue location</th>
+      <th>Vote count</th>
+      <th>Voted by</th>
+      <th>Comments</th>
+      <th>User who posted</th>
+      <th>Description</th>
+      <th>Slug</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @song_versions.each do |song_version| %>
+      <tr>
+        <td><%= song_version.song_name %></td>
+        <td><%= song_version.date %></td>
+        <td><%= song_version.venue_name %></td>
+        <td><%= song_version.venue_location %></td>
+        <td><%= song_version.vote_count %></td>
+        <td><%= song_version.voted_by_id %></td>
+        <td><%= song_version.comments_id %></td>
+        <td><%= song_version.user_who_posted_id %></td>
+        <td><%= song_version.description %></td>
+        <td><%= song_version.slug %></td>
+        <td><%= link_to 'Show', song_version %></td>
+        <td><%= link_to 'Edit', edit_song_version_path(song_version) %></td>
+        <td><%= link_to 'Destroy', song_version, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Song Version', new_song_version_path %>

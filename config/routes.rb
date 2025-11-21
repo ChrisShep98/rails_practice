@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :song_versions
   resources :users
   resources :categories
   get 'archives/index'
