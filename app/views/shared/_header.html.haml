@@ -1,2 +1,15 @@
-%h1 Fooooodlog!
-%span= link_to 'Create new Entry', new_entry_path
+%nav
+  = link_to 'Phavorites', root_path, class: 'navbar-brand'
+  .collapse.navbar-collapse
+    %ul.navbar-nav.ml-auto.flex-row.justify-content-around.w-100
+      .song-selector
+        = select_tag :song_select, options_for_select(SONGS.map { |s| [s[:song], s[:slug]] }, selected: params[:slug]),
+                     prompt: 'Select a Song',
+                     class: 'song-dropdown',
+                     onchange: "window.location.href = '/songs/' + this.value"
+      %li.nav-item
+        = link_to 'Submit Song', new_song_version_path, class: 'nav-link'
+      %li.nav-item
+        = link_to 'Random Song', random_song_path, class: 'nav-link'
+    / optionally: a button or link on the right
+    = link_to 'Sign In', new_song_version_path, class: 'btn btn-outline-primary ml-md-3'
