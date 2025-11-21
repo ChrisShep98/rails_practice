@@ -10,7 +10,7 @@ class SongVersionsController < ApplicationController
   def show
 
     slug = params[:slug]
-    @song = SONGS.find { |song| song[:slug] == slug }
+    @song_versions = SONGS.find { |song| song[:slug] == slug }
   end
 
   # GET /song_versions/new
