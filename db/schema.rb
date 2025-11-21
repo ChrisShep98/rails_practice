@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_11_17_214259) do
+ActiveRecord::Schema.define(version: 2025_11_21_181511) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -30,5 +30,20 @@ ActiveRecord::Schema.define(version: 2025_11_17_214259) do
     t.index ["category_id"], name: "index_entries_on_category_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password"
+    t.string "profile_picture"
+    t.integer "posts_id", null: false
+    t.integer "posts_commented_on_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["posts_commented_on_id"], name: "index_users_on_posts_commented_on_id"
+    t.index ["posts_id"], name: "index_users_on_posts_id"
+  end
+
   add_foreign_key "entries", "categories"
+  add_foreign_key "users", "posts", column: "posts_id"
+  add_foreign_key "users", "posts_commented_ons"
 end
