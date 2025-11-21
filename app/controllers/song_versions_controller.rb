@@ -8,6 +8,9 @@ class SongVersionsController < ApplicationController
 
   # GET /song_versions/1 or /song_versions/1.json
   def show
+
+    slug = params[:slug]
+    @song = SONGS.find { |song| song[:slug] == slug }
   end
 
   # GET /song_versions/new
@@ -55,6 +58,11 @@ class SongVersionsController < ApplicationController
       format.html { redirect_to song_versions_path, status: :see_other, notice: "Song version was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def random
+    random_song = SONGS.sample
+    redirect_to song_path(slug: random_song[:slug])
   end
 
   private
