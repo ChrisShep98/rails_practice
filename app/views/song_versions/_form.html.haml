@@ -1,0 +1,52 @@
+= form_with(model: song_version) do |form|
+  - if song_version.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(song_version.errors.count, "error")
+        prohibited this song_version from being saved:
+      %ul
+        - song_version.errors.each do |error|
+          %li= error.full_message
+
+  .field
+    = form.label :song_name
+    = form.text_field :song_name
+
+  .field
+    = form.label :date
+    = form.text_field :date
+
+  .field
+    = form.label :venue_name
+    = form.text_field :venue_name
+
+  .field
+    = form.label :venue_location
+    = form.text_field :venue_location
+
+  .field
+    = form.label :vote_count
+    = form.number_field :vote_count
+
+  .field
+    = form.label :voted_by_id
+    = form.text_field :voted_by_id
+
+  .field
+    = form.label :comments_id
+    = form.text_field :comments_id
+
+  .field
+    = form.label :user_who_posted_id
+    = form.text_field :user_who_posted_id
+
+  .field
+    = form.label :description
+    = form.text_field :description
+
+  .field
+    = form.label :slug
+    = form.text_field :slug
+
+  .actions
+    = form.submit
