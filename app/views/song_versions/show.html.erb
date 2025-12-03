@@ -11,44 +11,10 @@
 </p>
 
 <p>
-  <strong>Venue name:</strong>
-  <%= @song_version.venue_name %>
-</p>
-
-<p>
-  <strong>Venue location:</strong>
-  <%= @song_version.venue_location %>
-</p>
-
-<p>
-  <strong>Vote count:</strong>
-  <%= @song_version.vote_count %>
-</p>
-
-<p>
-  <strong>Voted by:</strong>
-  <%= @song_version.voted_by_id %>
-</p>
-
-<p>
-  <strong>Comments:</strong>
-  <%= @song_version.comments_id %>
-</p>
-
-<p>
-  <strong>User who posted:</strong>
-  <%= @song_version.user_who_posted_id %>
-</p>
-
-<p>
   <strong>Description:</strong>
   <%= @song_version.description %>
 </p>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @song_version.slug %>
-</p>
 
 <%= link_to 'Edit', edit_song_version_path(@song_version) %> |
 <%= link_to 'Back', song_versions_path %>
