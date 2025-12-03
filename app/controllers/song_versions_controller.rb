@@ -32,6 +32,7 @@ class SongVersionsController < ApplicationController
     
      date_options = performances.map do |shows|
        ["#{shows['show_date']} - #{shows['venue_name']} #{shows['venue_location']}"]
+       
      end
 
   render json: date_options 

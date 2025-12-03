@@ -43,12 +43,11 @@ document.addEventListener('turbolinks:load', () => {
       console.log('Data received:', data);
 
       dateSelect.innerHTML = '<option value="">Select a date</option>';
-      console.log(data.length);
       if (data.length > 0) {
-        data.forEach(([displayText, value]) => {
+        data.forEach(([dateInfo]) => {
           const option = document.createElement('option');
-          option.value = value;
-          option.textContent = displayText;
+          option.value = dateInfo;
+          option.textContent = dateInfo;
           dateSelect.appendChild(option);
         });
         dateSelect.disabled = false;
