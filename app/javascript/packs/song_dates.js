@@ -1,11 +1,4 @@
-console.log('Song dates JavaScript loaded!');
-
-const fetchStuff = async () => {
-const response = await fetch(`/song_versions/dates_for_song?slug=harry-hood`)
-  console.log(response)
-}
-
-fetchStuff()
+// TO DO: CLEAN THIS FILE UP
 
 document.addEventListener('turbolinks:load', () => {
   console.log('Turbolinks loaded');
