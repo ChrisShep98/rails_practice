@@ -10,7 +10,7 @@
 
   .field
     = form.label :songs
-    = form.select :songs, song_options, { prompt: "Select a song" }  
+    = form.select :song_name, song_options_for_select, { prompt: "Select a song" }  
 
   .field
     = form.label :dates

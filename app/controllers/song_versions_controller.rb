@@ -91,7 +91,6 @@ class SongVersionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def song_version_params
-    params.require(:song_version).permit(:song_name, :date, :venue_name, :venue_location, :vote_count, :voted_by_id,
-                                         :comments_id, :user_who_posted_id, :description, :slug)
+    params.require(:song_version).permit(:song_name, :date, :description)
   end
 end

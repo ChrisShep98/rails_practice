@@ -1,5 +1,7 @@
 module ApplicationHelper
-  def song_options
-    SONGS.map { |s| [s[:song], s[:slug]] }
+  def song_options_for_select
+    SONGS.map do |s| 
+      [s[:song], s[:song], { 'data-slug': s[:slug] } ]
+    end
   end
 end

@@ -2,8 +2,8 @@
 
 document.addEventListener('turbolinks:load', () => {
   console.log('Turbolinks loaded');
-  
-  const songSelect = document.getElementById('song_version_songs');
+
+  const songSelect = document.getElementById('song_version_song_name');
   const dateSelect = document.getElementById('song_version_date');
 
   console.log('Song select:', songSelect);
@@ -16,8 +16,9 @@ document.addEventListener('turbolinks:load', () => {
 
   songSelect.addEventListener('change', async (event) => {
     console.log('Song changed!', event.target.value);
-    const slug = event.target.value;
-    
+    const selectedOption = event.target.options[event.target.selectedIndex];
+    const slug = selectedOption.dataset.slug;
+
     if (!slug) {
       dateSelect.innerHTML = '<option value="">First select a song</option>';
       dateSelect.disabled = true;
@@ -30,19 +31,19 @@ document.addEventListener('turbolinks:load', () => {
     try {
       const url = `/song_versions/dates_for_song?slug=${encodeURIComponent(slug)}`;
       console.log('Fetching:', url);
-      
+
       const response = await fetch(url);
       console.log('Response:', response);
-      
+
       if (!response.ok) {
         throw new Error('Failed to fetch dates');
       }
-      
+
       const data = await response.json();
       console.log('Data received:', data);
-      
+
       dateSelect.innerHTML = '<option value="">Select a date</option>';
-      console.log(data.length) 
+      console.log(data.length);
       if (data.length > 0) {
         data.forEach(([displayText, value]) => {
           const option = document.createElement('option');
@@ -55,7 +56,6 @@ document.addEventListener('turbolinks:load', () => {
         dateSelect.innerHTML = '<option value="">No dates available</option>';
         dateSelect.disabled = true;
       }
-      
     } catch (error) {
       console.error('Error fetching dates:', error);
       dateSelect.innerHTML = '<option value="">Error loading dates</option>';
