@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :song_versions
+  resources :song_versions do
+    get 'dates_for_song', on: :collection
+  end
   get 'songs/random', to: 'song_versions#random', as: :random_song # Route for the random button (triggers the random action)
   get 'songs/:slug', to: 'song_versions#show', as: :song # Route for displaying individual songs (the show action)
   resources :users
