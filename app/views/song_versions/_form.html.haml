@@ -16,6 +16,9 @@
     = form.label :dates
     = form.select :date, [], { prompt: "Select a date" }
 
+  = form.hidden_field :venue_name, id: "venue_name_hidden"
+  = form.hidden_field :venue_location, id: "venue_location_hidden"
+  
   .field
     = form.label :description
     = form.text_field :description

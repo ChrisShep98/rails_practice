@@ -24,18 +24,21 @@ class SongVersionsController < ApplicationController
     slug = params[:slug]
 
     response = HTTParty.get("https://phish.in/api/v1/songs/#{slug}.json",
-    headers: {
-        'Authorization': "Bearer #{ENV["PHISH_KEY"]}",
-        'Content-Type': 'application/json'
-      })
-     performances = response.parsed_response['data']['tracks']
-    
-     date_options = performances.map do |shows|
-       ["#{shows['show_date']} - #{shows['venue_name']} #{shows['venue_location']}"]
-       
-     end
+                            headers: {
+                              'Authorization': "Bearer #{ENV['PHISH_KEY']}",
+                              'Content-Type': 'application/json'
+                            })
+    performances = response.parsed_response['data']['tracks']
 
-  render json: date_options 
+    date_options = performances.map do |shows|
+      [{
+        display: "#{shows['show_date']} - #{shows['venue_name']} #{shows['venue_location']}",
+        date: shows['show_date'],
+        venue_name: shows['venue_name'],
+        venue_location: shows['venue_location']
+      }]
+    end
+    render json: date_options
   end
 
   # POST /song_versions or /song_versions.json
@@ -92,6 +95,6 @@ class SongVersionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def song_version_params
-    params.require(:song_version).permit(:song_name, :date, :description)
+    params.require(:song_version).permit(:song_name, :date, :venue_name, :venue_location, :description)
   end
 end
