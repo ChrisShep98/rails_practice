@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_12_04_211217) do
+ActiveRecord::Schema.define(version: 2025_12_04_220328) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2025_12_04_211217) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_song_versions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,4 +56,5 @@ ActiveRecord::Schema.define(version: 2025_12_04_211217) do
   end
 
   add_foreign_key "entries", "categories"
+  add_foreign_key "song_versions", "users"
 end

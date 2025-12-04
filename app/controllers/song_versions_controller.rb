@@ -45,6 +45,7 @@ class SongVersionsController < ApplicationController
   # POST /song_versions or /song_versions.json
   def create
     @song_version = SongVersion.new(song_version_params)
+    @song_version.user = current_user
 
     respond_to do |format|
       if @song_version.save
