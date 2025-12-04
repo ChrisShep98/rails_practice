@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   end
   get 'songs/random', to: 'song_versions#random', as: :random_song # Route for the random button (triggers the random action)
   get 'songs/:slug', to: 'song_versions#show', as: :song # Route for displaying individual songs (the show action)
-  resources :users
   resources :categories
   get 'archives/index'
   resources :entries
