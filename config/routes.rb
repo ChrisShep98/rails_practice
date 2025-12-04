@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :song_versions do
     get 'dates_for_song', on: :collection
   end
