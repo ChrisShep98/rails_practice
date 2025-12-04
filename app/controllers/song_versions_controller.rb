@@ -1,4 +1,5 @@
 class SongVersionsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show, :random]
   before_action :set_song_version, only: %i[show edit update destroy]
 
   # GET /song_versions or /song_versions.json
