@@ -1,0 +1,33 @@
+%p#notice
+  = notice
+
+%h1
+  Song Versions
+
+%table
+  %thead
+    %tr
+      %th Song name
+      %th Date
+      %th Venue name
+      %th Venue location
+      %th Description
+      %th Posted by User:
+      %th{colspan: 3}
+  %tbody
+    - @song_versions.each do |song_version|
+      %tr
+      %td= song_version.song_name
+      %td= song_version.date
+      %td= song_version.venue_name
+      %td= song_version.venue_location
+      %td= song_version.description
+      %td= song_version.user.email
+      %td
+        = link_to 'Show', song_version
+      - if current_user && current_user.email == song_version.user.email
+        %td= link_to 'Edit', edit_song_version_path(song_version)
+        %td= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' }
+
+
+
